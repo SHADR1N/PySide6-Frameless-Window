@@ -1,7 +1,7 @@
 """
-PyQt5-Frameless-Window
+PySide6-Frameless-Window
 ======================
-A cross-platform frameless window based on pyqt5, support Win32, Linux and macOS.
+A cross-platform frameless window based on PySide6, support Win32, Linux and macOS.
 
 Documentation is available in the docstrings and
 online at https://pyqt-frameless-window.readthedocs.io.
@@ -16,7 +16,7 @@ __version__ = "0.3.7"
 
 import sys
 
-from PyQt5.QtWidgets import QDialog, QMainWindow
+from PySide6.QtWidgets import QDialog, QMainWindow
 
 from .titlebar import TitleBar, TitleBarButton, SvgTitleBarButton, StandardTitleBar, TitleBarBase
 
@@ -46,8 +46,15 @@ class FramelessDialog(QDialog, FramelessWindow):
         self.windowEffect.disableMaximizeButton(self.winId())
 
 
-class FramelessMainWindow(QMainWindow, FramelessWindow):
+class FramelessMainWindow(QMainWindow):
     """ Frameless main window """
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.frameless = FramelessWindow(self)
+
+        attributes = vars(self.frameless)
+
+        # Переопределить атрибуты в текущем экземпляре
+        for attr_name, attr_value in attributes.items():
+            setattr(self, attr_name, attr_value)

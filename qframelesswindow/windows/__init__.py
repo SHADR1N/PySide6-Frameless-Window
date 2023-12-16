@@ -6,9 +6,9 @@ from ctypes.wintypes import LPRECT, MSG
 import win32api
 import win32con
 import win32gui
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QCloseEvent, QCursor
-from PyQt5.QtWidgets import QApplication, QWidget
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QCloseEvent, QCursor, QPainter
+from PySide6.QtWidgets import QApplication, QWidget, QStyle, QStyleOption
 
 from ..titlebar import TitleBar
 from ..utils import win32_utils as win_utils
@@ -35,6 +35,14 @@ class WindowsFramelessWindow(QWidget):
 
         self.resize(500, 500)
         self.titleBar.raise_()
+
+    def paintEvent(self, event):
+        opt = QStyleOption()
+        opt.initFrom(self)
+        painter = QPainter(self)
+
+        style = self.style()
+        style.drawPrimitive(QStyle.PrimitiveElement.PE_Widget, opt, painter, self)
 
     def updateFrameless(self):
         """ update frameless window """

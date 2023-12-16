@@ -1,8 +1,8 @@
 # coding:utf-8
 import sys
 
-from PyQt5.QtCore import QUrl, Qt
-from PyQt5.QtWidgets import QApplication, QHBoxLayout
+from PySide6.QtCore import QUrl, Qt
+from PySide6.QtWidgets import QApplication, QHBoxLayout
 
 from qframelesswindow import FramelessWindow, TitleBar, StandardTitleBar
 from qframelesswindow.webengine import FramelessWebEngineView

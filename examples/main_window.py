@@ -1,8 +1,8 @@
 # coding:utf-8
 import sys
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QLabel, QMenuBar, QMenu, QStatusBar, QTextEdit, QHBoxLayout
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QLabel, QMenuBar, QMenu, QStatusBar, QTextEdit, QHBoxLayout
 
 from qframelesswindow import FramelessMainWindow, FramelessDialog
 
@@ -10,8 +10,9 @@ from qframelesswindow import FramelessMainWindow, FramelessDialog
 class MainWindow(FramelessMainWindow):
 
     def __init__(self):
-        super().__init__()
+        FramelessMainWindow.__init__(self)
         self.setWindowTitle("Frameless Main Window")
+
 
         # add menu bar
         menuBar = QMenuBar(self.titleBar)
@@ -60,10 +61,7 @@ class MainWindow(FramelessMainWindow):
 
 if __name__ == '__main__':
     # enable dpi scale
-    QApplication.setHighDpiScaleFactorRoundingPolicy(
-        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+    QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
 
     app = QApplication(sys.argv)
 

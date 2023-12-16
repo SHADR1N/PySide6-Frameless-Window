@@ -1,11 +1,11 @@
 # coding:utf-8
 from enum import Enum
 
-from PyQt5.QtCore import QFile, QPointF, QRectF, Qt, pyqtProperty
-from PyQt5.QtGui import QColor, QPainter, QPainterPath, QPen
-from PyQt5.QtWidgets import QAbstractButton
-from PyQt5.QtSvg import QSvgRenderer
-from PyQt5.QtXml import QDomDocument
+from PySide6.QtCore import QFile, QPointF, QRectF, Qt, Property
+from PySide6.QtGui import QColor, QPainter, QPainterPath, QPen
+from PySide6.QtWidgets import QAbstractButton
+from PySide6.QtSvg import QSvgRenderer
+from PySide6.QtXml import QDomDocument
 
 from .._rc import resource
 
@@ -165,14 +165,14 @@ class TitleBarButton(QAbstractButton):
 
         return self._pressedColor, self._pressedBgColor
 
-    normalColor = pyqtProperty(QColor, getNormalColor, setNormalColor)
-    hoverColor = pyqtProperty(QColor, getHoverColor, setHoverColor)
-    pressedColor = pyqtProperty(QColor, getPressedColor, setPressedColor)
-    normalBackgroundColor = pyqtProperty(
+    normalColor = Property(QColor, getNormalColor, setNormalColor)
+    hoverColor = Property(QColor, getHoverColor, setHoverColor)
+    pressedColor = Property(QColor, getPressedColor, setPressedColor)
+    normalBackgroundColor = Property(
         QColor, getNormalBackgroundColor, setNormalBackgroundColor)
-    hoverBackgroundColor = pyqtProperty(
+    hoverBackgroundColor = Property(
         QColor, getHoverBackgroundColor, setHoverBackgroundColor)
-    pressedBackgroundColor = pyqtProperty(
+    pressedBackgroundColor = Property(
         QColor, getPressedBackgroundColor, setPressedBackgroundColor)
 
 

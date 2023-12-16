@@ -8,8 +8,8 @@ import win32api
 import win32con
 import win32gui
 import win32print
-from PyQt5.QtCore import QOperatingSystemVersion
-from PyQt5.QtGui import QGuiApplication
+from PySide6.QtCore import QOperatingSystemVersion
+from PySide6.QtGui import QGuiApplication
 from win32comext.shell import shellcon
 
 
